@@ -1,4 +1,4 @@
-# Club Info Site
+# Project Sigmund
 경희대학교 컴퓨터공학과 D.com동아리의 스터디 및 정보공유 게시판과 키오스크 제작을 위한 프로젝트 입니다.  
 
 # Issue
