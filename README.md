@@ -3,7 +3,7 @@
 
 # Issue
 추가기능 등 의견을 자유롭게 받고 있습니다. 
-본 프로젝트의 `issue`나, https://2018-naver-ai.slack.com 의 club-info-site-dev 채널에 남겨주세요.
+본 프로젝트의 `issue`나, https://dcom-khu.slack.com 의 club-info-site-dev 채널에 남겨주세요.
 
 # Requirement
 같이 프로젝트할 분을 구합니다. 
