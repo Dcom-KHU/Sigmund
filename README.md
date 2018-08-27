@@ -10,7 +10,7 @@
 같이 공부하며 할 예정이니 자유롭게 지원해 주세요.
 
 - **열정이 넘치는 자 (필수)**  
-- `Git, Github` 기초지식을 가지고 잇는자
+- `Git, Github` 기초지식을 가지고 있는자
 - `Python`, `Django`를 사용해 본자 (Backend 부분 우대) 
 - `Html`, `Css`, `Javascript`를 사용해본자 (Frontend 부문 우대)  
 - `Raspberry pi`, `ubuntu`를 사용해본자 (Backend 및 Kiosk designe 부문 우대)  
