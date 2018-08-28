@@ -2,6 +2,8 @@ import requests
 import json
 import re
 from json import dumps, loads, JSONEncoder, JSONDecoder
+from datetime import datetime
+
 
 def strToInt(str):
     result = 0
@@ -42,10 +44,12 @@ for i in range(1, len(titles)):
     title = ''.join(titles[i].text.split())
     organ = ''.join(organs[i].text.split())
     remdate = ''.join(remaindate[i].text.split())
-    factdate = strToInt(remaindate[i])
-    print(factdate)
+    
+    S = remdate 
+    numbers = re.findall("\d+",S)
+    print(numbers)
 
-    j2 = {"title": title,"organism":organ,"Date":remdate}
+    j2 = {"title": title,"organism":organ,"Date":numbers}
     challenge.append(j2)
 print(challenge)
 print(json.dumps({"challenge":challenge}, indent=2))
