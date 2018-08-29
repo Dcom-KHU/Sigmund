@@ -2,7 +2,9 @@ import requests
 import json
 import re
 from json import dumps, loads, JSONEncoder, JSONDecoder
-from datetime import datetime
+import datetime
+
+now = datetime.datetime.now()
 
 
 def strToInt(str):
@@ -36,7 +38,8 @@ titles = bbs[0].findAll("div", {"class": "tit"})
 organs = bbs[0].findAll("div", {"class": "organ"})
 remaindate = bbs[0].findAll("div", {"class": "day"})
 
-
+d = datetime.time
+print(d)
 challenge = []
 for i in range(1, len(titles)):
     
@@ -47,9 +50,12 @@ for i in range(1, len(titles)):
     
     S = remdate 
     numbers = re.findall("\d+",S)
-    print(numbers)
+    
 
-    j2 = {"title": title,"organism":organ,"Date":numbers}
+    endDate = now + datetime.timedelta(days=1)
+
+    j2 = {"title": title,"organism":organ,"Date":endDate}
+
     challenge.append(j2)
 print(challenge)
 print(json.dumps({"challenge":challenge}, indent=2))

@@ -1,0 +1,4 @@
+import datetime
+
+d = datetime.date
+print(d)
