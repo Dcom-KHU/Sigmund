@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper">
         <Navigation></Navigation>
         <Footer></Footer>
     </div>
@@ -13,5 +13,7 @@ export default {
 }
 </script>
 <style scoped>
-
+.wrapper{
+    background-color: #252627;
+}
 </style>
