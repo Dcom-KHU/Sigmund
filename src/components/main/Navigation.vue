@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="nav-wrapper">
         <div class="icon-container">
             <i class="fas fa-home"></i>
             <i class="fas fa-users"></i>
@@ -22,7 +22,8 @@ export default {
 }
 </script>
 <style scoped>
-.wrapper{
+.nav-wrapper{
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
