@@ -11,7 +11,6 @@
 <script>
 import Navigation from './Navigation'
 import Footer from './Footer'
-// import FullPage from 'vue-fullpage.js'
 
 export default {
     components: {
@@ -40,6 +39,7 @@ export default {
                 }
             },
             scrollPos : 0,
+            isScroll : false,
         }
     },
     methods:{
@@ -48,33 +48,21 @@ export default {
                 top: index * this.page.height,
                 behavior: "smooth"
             })
-            this.preventScroll();
-        },
-        preventScroll(){
-            addEventListener("scroll", function(e){
-                e.preventDefault();
-                e.returnValue = false;
-            });
+            document.body.style.height = "100%";
+            document.body.style.overflow = "hidden";
 
-            setTimeout(function(){
-                removeEventListener("scroll", function(e){
-                    e.preventDefault();
-                    e.returnValue = false;
-                });
-            }, 3000);
+            setTimeout(()=>{document.body.removeAttribute("style");}, 550);
         },
         handleScroll(ev){
-            // console.log(this.scrollPos);
-            // detects new state and compares it with the new one
             if ((document.body.getBoundingClientRect()).top > this.scrollPos){
-                //up
+                console.log("up");
                 if(this.page.currentPage > this.page.getFirstPage()){
                     this.page.currentPage -= 1;
                     this.smoothScroll(this.page.currentPage);
                 }
             }
 	        else{
-                //down
+                console.log("down");
                 if(this.page.currentPage < this.page.getLastPage()){
                     this.page.currentPage += 1;
                     this.smoothScroll(this.page.currentPage);
@@ -102,9 +90,5 @@ export default {
 }
 .content:nth-of-type(2){
     background-color: #ffffff;
-}
-.stop-scrolling{
-    height: 100%;
-    overflow: hidden;
 }
 </style>
