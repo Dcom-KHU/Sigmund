@@ -15,8 +15,8 @@
     </div>
 </template>
 <script>
-import Navigation from './Navigation'
-import Footer from './Footer'
+import Navigation from '../fixed/Navigation'
+import Footer from '../fixed/Footer'
 
 let TxtType = function(el, rotate, period){
     this.rotate = rotate;

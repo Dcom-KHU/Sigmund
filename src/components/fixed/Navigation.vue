@@ -6,9 +6,9 @@
             <i class="fas fa-home"></i>
         </div>
         <div class="icon-container">
-            <i class="fas fa-home"></i>
+            <i class="fas fa-home" v-on:click="movePage('main')"></i>
+            <i class="fas fa-question" v-on:click="movePage('competition')"></i>
             <i class="fas fa-users"></i>
-            <i class="fas fa-home"></i>
         </div>
         <div class="icon-container">
             <i class="fab fa-twitter"></i>
@@ -17,8 +17,14 @@
     </div>
 </template>
 <script>
-export default {
+import router from '../../router';
 
+export default {
+    methods:{
+        movePage(src){  
+            router.push({ name : src });
+        },
+    },
 }
 </script>
 <style scoped>
@@ -53,7 +59,7 @@ export default {
     margin-bottom: 16px;
     justify-content: flex-end;
 }
-.fas, .fab{
+.fas, .fab, .fal{
     display: block;
     color: #585858;
 }
