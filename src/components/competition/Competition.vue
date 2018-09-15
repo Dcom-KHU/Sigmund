@@ -198,32 +198,6 @@ export default {
     font-weight: 400;
     color: #003569;
 }
-.fade-in{
-    animation-duration: 2s;
-    animation-name: fade-in;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-.fade-out{
-    animation-duration: 2s;
-    animation-name: fade-out;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-@keyframes fade-out{
-    from{
-        transform: translateX(0px);
-    }
-    to{
-        transform: translateX(-400px);
-    }
-}
-@keyframes fade-in{
-    from{
-        transform: translateX(400px);
-    }
-    to{
-        transform: translateX(0px);
-    }
-}
+
+
 </style>

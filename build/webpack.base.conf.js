@@ -19,7 +19,7 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
+      ? config.build.assetsPublicPath // devServer에서는 이런것을 이용해서 특정경로를 스태틱 패스로 지정을 해줌 
       : config.dev.assetsPublicPath
   },
   resolve: {
