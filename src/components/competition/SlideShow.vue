@@ -9,32 +9,47 @@
 </template>
 <script>
 let slideshow = function(obj){
+    this.timer;
     this.obj = obj;
     this.loopNum = 0;
     this.period = 4000;
-    this.scrollY = 400;
+    this.scrollY = 400.0;
     this.slide();
 };
 slideshow.prototype.slide = function(){
     let i = this.loopNum % this.obj.length;
     let container = document.getElementById("img-wrapper");
 
-    if(this.loopNum !== 0){
-        if(i !== 0){
-            container.style.top = parseFloat(getComputedStyle(container).top) - this.scrollY + 'px';
-        }else{
-            container.style.top = '0px';
-        }
-    }
+    container.style.top = -(i * this.scrollY) + 'px';
 
     this.loopNum++;
 
     let bind = this;
-    setTimeout(function(){
+    this.timer = setTimeout(function(){
         bind.slide();
     }, this.period);
 };
 export default {
+    data(){
+        return{
+            obj:[],
+            virtualImg: document.createElement("img"),
+            timer: function(){},
+        }
+    },
+    methods:{
+        getElement(){
+            return new Promise((resolve, reject)=>{
+                window.setTimeout(()=>{
+                    if(document.getElementsByClassName('mark')){
+                        resolve();
+                    }else{
+                        reject();
+                    }
+                }, 1000);
+            });
+        }
+    },
     mounted(){
         //객체 검사 후, 존재하면
         this.obj.push({name : 'name1', price : 'price1', src : require('../../assets/competition1.png')});
@@ -54,30 +69,14 @@ export default {
                 console.log(competitions[i])
             }
             container.style.height += bind.virtualImg.height+"px";
-            new slideshow(bind.obj);
+            bind.timer = new slideshow(bind.obj);
 
         }, function(fail){
             setTimeout(function(){fetchImg()},100);
         });
     },
-    data(){
-        return{
-            obj:[],
-            virtualImg: document.createElement("img"),
-        }
-    },
-    methods:{
-        getElement(){
-            return new Promise((resolve, reject)=>{
-                window.setTimeout(()=>{
-                    if(document.getElementsByClassName('mark')){
-                        resolve();
-                    }else{
-                        reject();
-                    }
-                }, 1000);
-            });
-        }
+    destroyed(){
+        clearTimeout(this.timer.timer);
     }
 }
 </script>
