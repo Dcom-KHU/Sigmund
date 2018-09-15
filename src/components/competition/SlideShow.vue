@@ -12,26 +12,21 @@ let slideshow = function(obj){
     this.obj = obj;
     this.loopNum = 0;
     this.period = 4000;
+    this.scrollY = 400;
     this.slide();
 };
 slideshow.prototype.slide = function(){
     let i = this.loopNum % this.obj.length;
     let container = document.getElementById("img-wrapper");
 
-    // debugger
-    container.style.top = parseFloat(getComputedStyle(container).top) - 400 + 'px';
-    // if(i%2 == 0){
-        
-        
-    //     container.classList.remove('fade-in');
-    //     container.classList.add('fade-out');
-    // }else{
-    //     container.style.top = parseFloat(getComputedStyle(container).top)+'px';
-    //     container.classList.remove('fade-out');
-    //     container.classList.add('fade-in');
-    // }
-    // container.style.transform = "translateY(100px)";
-    
+    if(this.loopNum !== 0){
+        if(i !== 0){
+            container.style.top = parseFloat(getComputedStyle(container).top) - this.scrollY + 'px';
+        }else{
+            container.style.top = '0px';
+        }
+    }
+
     this.loopNum++;
 
     let bind = this;
