@@ -28,7 +28,7 @@
                             <i class="fas fa-ellipsis-h"></i>
                         </div>
                     </div>
-                    <slide-wrapper>
+                    <slide-wrapper v-on:changeIndex="changeCompetitionIndex">
                     </slide-wrapper>
                     <div id="user-function">
                         <div>
@@ -46,7 +46,10 @@
                         </div>
                         <div>
                             <span>dcom_offical</span>
-                            <div>
+                            <change-detail v-bind:competitionIndex="competitionIndex">
+
+                            </change-detail>
+                            <!-- <div>
                                 <span>#300만원</span>
                                 <span>#300만원</span>
                                 <span>#300만원</span>
@@ -57,7 +60,7 @@
                                 <span>#300만원</span>
                                 <span>#300만원</span>
                                 <span>#300만원</span>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </span>
@@ -69,17 +72,25 @@
 import Navigation from '../fixed/Navigation'
 import Footer from '../fixed/Footer'
 import slideWrapper from './SlideShow'
+import changeDetail from './changeDetail'
 
 export default {
     components: {
         Navigation, 
         Footer, 
         slideWrapper,
+        changeDetail,
     },
     data(){
         return{
+            competitionIndex: 0,
         }
     },
+    methods:{
+        changeCompetitionIndex(index){
+            this.competitionIndex = index;
+        }   
+    }
 }
 </script>
 <style scoped>

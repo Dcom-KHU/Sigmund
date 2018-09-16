@@ -8,9 +8,10 @@
     </div>
 </template>
 <script>
-let slideshow = function(obj){
+let slideshow = function(bind){
     this.timer;
-    this.obj = obj;
+    this.vue = bind;
+    this.obj = bind.obj;
     this.loopNum = 0;
     this.period = 4000;
     this.scrollY = 400.0;
@@ -18,6 +19,7 @@ let slideshow = function(obj){
 };
 slideshow.prototype.slide = function(){
     let i = this.loopNum % this.obj.length;
+    this.vue.changeIndex(i);
     let container = document.getElementById("img-wrapper");
 
     container.style.top = -(i * this.scrollY) + 'px';
@@ -34,7 +36,7 @@ export default {
         return{
             obj:[],
             virtualImg: document.createElement("img"),
-            timer: function(){},
+            slideObj: function(){},
         }
     },
     methods:{
@@ -48,6 +50,9 @@ export default {
                     }
                 }, 1000);
             });
+        },
+        changeIndex(index){
+            this.$emit('changeIndex', index);
         }
     },
     mounted(){
@@ -66,17 +71,16 @@ export default {
 
             for(let i = 0 ; i < competitions.length; i++){
                 competitions[i].setAttribute("src", bind.obj[i].src);
-                console.log(competitions[i])
             }
             container.style.height += bind.virtualImg.height+"px";
-            bind.timer = new slideshow(bind.obj);
+            bind.slideObj = new slideshow(bind);
 
         }, function(fail){
             setTimeout(function(){fetchImg()},100);
         });
     },
     destroyed(){
-        clearTimeout(this.timer.timer);
+        clearTimeout(this.slideObj.timer);
     }
 }
 </script>
