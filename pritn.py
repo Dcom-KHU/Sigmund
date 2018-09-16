@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import requests
 import json
 import re
@@ -44,3 +45,13 @@ for i in range(1, len(titles)):
     challenge.append(j2)
 print(challenge)
 print(json.dumps({"challenge":challenge}, indent=2))
+=======
+import time
+from datetime import datetime
+
+d = 20 
+s = d* 60*60*24
+timestamp = time.mktime(datetime.today().timetuple()) + s
+p = datetime.fromtimestamp(timestamp)
+print(p)
+>>>>>>> 2b362264c0c4889626738bafa8f92f4252b1a640
