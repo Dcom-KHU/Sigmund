@@ -29,7 +29,7 @@ class CrawlingBoard :
     # 0 : 정상
     # 1 : URL 요청 실패
     def Crawling(self):
-        Base_URL = "https://www.wevity.com/"
+        Base_URL = "https://www.wevity.com"
         URL = "https://www.wevity.com/?c=find&s=1&gub=1&cidx=21&gp=" + str(self.page)
         resp = requests.get(URL)
         if resp.status_code != 200:
