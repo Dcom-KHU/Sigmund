@@ -8,6 +8,8 @@
     </div>
 </template>
 <script>
+import eventBus from "../event/eventBus";
+
 let slideshow = function(bind){
     this.timer;
     this.vue = bind;
@@ -52,7 +54,7 @@ export default {
             });
         },
         changeIndex(index){
-            this.$emit('changeIndex', index);
+            eventBus.$emit('changeIndex', index);
         }
     },
     mounted(){

@@ -8,9 +8,12 @@ export default {
     props:['competitionIndex'],
     data(){
         return{
-            
-        }
-    }
+
+        }   
+    },
+    methods:{
+    },
+
 }
 </script>
 <style scoped>

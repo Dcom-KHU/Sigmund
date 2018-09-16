@@ -69,6 +69,7 @@
     </div>
 </template>
 <script>
+import eventBus from '../event/eventBus'
 import Navigation from '../fixed/Navigation'
 import Footer from '../fixed/Footer'
 import slideWrapper from './SlideShow'
@@ -90,6 +91,9 @@ export default {
         changeCompetitionIndex(index){
             this.competitionIndex = index;
         }   
+    },
+    created(){
+        eventBus.$on('changeIndex', (index)=>{this.changeCompetitionIndex(index)});
     }
 }
 </script>
