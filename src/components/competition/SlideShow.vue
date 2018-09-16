@@ -59,10 +59,10 @@ export default {
     },
     mounted(){
         //객체 검사 후, 존재하면
-        this.obj.push({name : 'name1', price : 'price1', src : require('../../assets/competition1.png')});
-        this.obj.push({name : 'name2', price : 'price2', src : 'https://www.wevity.com/upload/contest/20180905195551_636f5e5c.jpg'});
-        this.obj.push({name : 'name3', price : 'price3', src : 'https://www.wevity.com/upload/contest/20180827002922_63e5409e.jpg'});
-        this.obj.push({name : 'name4', price : 'price4', src : 'https://www.wevity.com/upload/contest/20180802080737_2143b5a0.jpg'});
+        this.obj.push({src : require('../../assets/competition1.png')});
+        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180905195551_636f5e5c.jpg'});
+        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180827002922_63e5409e.jpg'});
+        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180802080737_2143b5a0.jpg'});
 
         this.virtualImg.setAttribute("src", this.obj[0].src);
         
