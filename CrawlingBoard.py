@@ -63,7 +63,7 @@ class CrawlingBoard :
             price = temp_tag[5]
             won_price = temp_tag[6]
             homepage = temp_tag[7]
-            img = link + temp_soup.select_one('div.cd-area div.img div.thumb').img['src'].strip()
+            img = Base_URL + temp_soup.select_one('div.cd-area div.img div.thumb').img['src'].strip()
 
             challenge.append({"link":Base_URL + link,"title":title,"field":field,"target":target,"organization":organization,"date":date,"price":price,"won_price":won_price,"homepage":homepage,"img":img})          
 
