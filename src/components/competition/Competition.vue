@@ -47,20 +47,7 @@
                         <div>
                             <span>dcom_offical</span>
                             <change-detail v-bind:competitionIndex="competitionIndex">
-
                             </change-detail>
-                            <!-- <div>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                                <span>#300만원</span>
-                            </div> -->
                         </div>
                     </div>
                 </span>
@@ -112,7 +99,8 @@ export default {
     border: 1px solid black;
 }
 .competition-items{
-    height: 680px;
+    /* height: 680px; */
+    height: 730px;
     width: 414px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -209,10 +197,4 @@ export default {
     font-size: 14px;
     font-weight: 700;
 }
-#detail > div:nth-of-type(2) > span:nth-of-type(2){
-    font-weight: 400;
-    color: #003569;
-}
-
-
 </style>

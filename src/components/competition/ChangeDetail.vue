@@ -39,8 +39,11 @@ export default {
             let container = document.getElementById("detail_wrapper");
             let innerHTML = (function(detail){
                 let html = '';
+                let margin = 5 + 'px';
+                let fontWeight = 400;
+                let color = "#003569";
                 for(let value in detail){
-                    html += '<span style="margin-right:10px">'+ '#' + detail[value] +'</span>';
+                    html += `<span style="margin-right:${margin}; font-weight:${fontWeight}; color: ${color};">#${detail[value]}</span>`;
                 }
                 return html;
             })(newValue);
