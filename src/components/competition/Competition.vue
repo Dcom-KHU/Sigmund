@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div id="detail">
-                        <div>
+                        <div id="like">
                             like 258
                         </div>
                         <div>
@@ -72,7 +72,8 @@ export default {
     data(){
         return{
             competitions: [],
-            competitionIndex: 0
+            competitionIndex: 0,
+            likeElement: {},
         }
     },
     methods:{
@@ -90,11 +91,24 @@ export default {
         },
         changeCompetitionIndex(index){
             this.competitionIndex = index;
+        },
+        randomLike(){
+
         }
     },
     created(){
         eventBus.$on('changeIndex', (index)=>{this.changeCompetitionIndex(index)});
         this.getCompetitions();
+    },
+    mounted(){
+        this.likeElement = document.getElementById("like");
+    },
+    watch:{
+        competitionIndex(){
+            this.likeElement.innerText = function(max, min){
+                return `like ${parseInt(Math.random() * (max - min) + min)}`;
+            }(1000, 1);
+        }
     }
 }
 </script>
