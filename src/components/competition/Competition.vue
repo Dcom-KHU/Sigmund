@@ -71,16 +71,30 @@ export default {
     },
     data(){
         return{
-            competitionIndex: 0,
+            competitions: [],
+            competitionIndex: 0
         }
     },
     methods:{
+        getCompetitions(){
+            let bind = this;
+            const url = 'http://13.125.196.191:8888/';
+            this.$http.get(`${url}`).then(
+                function(success){
+                    bind.competitions = success.data;
+                    eventBus.$emit('getCompetitions', bind.competitions);
+                }
+            ).catch(function(error){
+                console.log(error);
+            });
+        },
         changeCompetitionIndex(index){
             this.competitionIndex = index;
-        }   
+        }
     },
     created(){
         eventBus.$on('changeIndex', (index)=>{this.changeCompetitionIndex(index)});
+        this.getCompetitions();
     }
 }
 </script>
