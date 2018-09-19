@@ -58,27 +58,24 @@ export default {
         }
     },
     mounted(){
-        //객체 검사 후, 존재하면
-        this.obj.push({src : require('../../assets/competition1.png')});
-        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180905195551_636f5e5c.jpg'});
-        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180827002922_63e5409e.jpg'});
-        this.obj.push({src : 'https://www.wevity.com/upload/contest/20180802080737_2143b5a0.jpg'});
+        eventBus.$on('getCompetitions', (data)=>{
+            this.obj = data;
+            this.virtualImg.setAttribute("src", this.obj[0].img);
 
-        this.virtualImg.setAttribute("src", this.obj[0].src);
-        
-        let bind = this;
-        let fetchImg = this.getElement(true).then(function(success){
-            let container = document.getElementById("slider");
-            let competitions = document.getElementsByClassName('mark');
+            let bind = this;
+            let fetchImg = this.getElement(true).then(function(success){
+                // debugger;
+                let container = document.getElementById("slider");
+                let competitions = document.getElementsByClassName('mark');
 
-            for(let i = 0 ; i < competitions.length; i++){
-                competitions[i].setAttribute("src", bind.obj[i].src);
-            }
-            container.style.height += bind.virtualImg.height+"px";
-            bind.slideObj = new slideshow(bind);
-
-        }, function(fail){
+                for(let i = 0 ; i < competitions.length; i++){
+                    competitions[i].setAttribute("src", bind.obj[i].img);
+                }
+                container.style.height += bind.virtualImg.height+"px";
+                bind.slideObj = new slideshow(bind);
+            }, function(fail){
             setTimeout(function(){fetchImg()},100);
+            });   
         });
     },
     destroyed(){

@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div id="detail">
-                        <div>
+                        <div id="like">
                             like 258
                         </div>
                         <div>
@@ -61,6 +61,7 @@ import Navigation from '../fixed/Navigation'
 import Footer from '../fixed/Footer'
 import slideWrapper from './SlideShow'
 import changeDetail from './changeDetail'
+import config from '../../../config/config.json'
 
 export default {
     components: {
@@ -71,16 +72,45 @@ export default {
     },
     data(){
         return{
+            competitions: [],
             competitionIndex: 0,
+            likeElement: {},
         }
     },
     methods:{
+        getCompetitions(){
+            let bind = this;
+            const url = config.confidential.serverIP;
+          
+            this.$http.get(`${url}`).then(
+                function(success){
+                    bind.competitions = success.data;
+                    eventBus.$emit('getCompetitions', bind.competitions);
+                }
+            ).catch(function(error){
+                console.log(error);
+            });
+        },
         changeCompetitionIndex(index){
             this.competitionIndex = index;
-        }   
+        },
+        randomLike(){
+
+        }
     },
     created(){
         eventBus.$on('changeIndex', (index)=>{this.changeCompetitionIndex(index)});
+        this.getCompetitions();
+    },
+    mounted(){
+        this.likeElement = document.getElementById("like");
+    },
+    watch:{
+        competitionIndex(){
+            this.likeElement.innerText = function(max, min){
+                return `like ${parseInt(Math.random() * (max - min) + min)}`;
+            }(1000, 1);
+        }
     }
 }
 </script>

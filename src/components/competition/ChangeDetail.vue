@@ -4,6 +4,8 @@
     </div>
 </template>
 <script>
+import eventBus from '../event/eventBus';
+
 export default {
     props:['competitionIndex'],
     data(){
@@ -15,21 +17,11 @@ export default {
     methods:{
     },
     created(){
-        //TO-DO back-end 정의 후, json 비동기를 통한 배열 push로 수정할 것
-        for(let i = 0; i < 4; i++){
-            this.details.push({
-                "link" : "홈페이지 링크 문자열"+i,
-                "title" : "공모전 제목 문자열"+i,
-                "field" : "분야 문자열"+i,
-                "target" : "참여 대상 문자열"+i,
-                "organization" : "대회 주최 기관 문자열"+i,
-                "date" : "날짜 문자열"+i,
-                "price" : "총 상금 문자열"+i,
-                "won_price" : "우승 상금 문자열"+i,
-                "homepage" : "관련 홈페이지 문자열"+i
-            });
-        }
-        this.currentDetail = this.details[0];
+        eventBus.$on('getCompetitions', (data)=>{
+            console.log(data);
+            this.details = data;
+            this.currentDetail = this.details[0];
+        });
     },
     watch:{
         competitionIndex(newValue){
@@ -43,6 +35,8 @@ export default {
                 let fontWeight = 400;
                 let color = "#003569";
                 for(let value in detail){
+                    if(value === 'homepage' || value === 'img' || value === 'link')
+                        continue;
                     html += `<span style="margin-right:${margin}; font-weight:${fontWeight}; color: ${color};">#${detail[value]}</span>`;
                 }
                 return html;
@@ -54,4 +48,8 @@ export default {
 }
 </script>
 <style scoped>
+#detail_wrapper{
+    display: flex;
+    flex-direction: column;
+}
 </style>
