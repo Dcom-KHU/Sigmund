@@ -61,6 +61,7 @@ import Navigation from '../fixed/Navigation'
 import Footer from '../fixed/Footer'
 import slideWrapper from './SlideShow'
 import changeDetail from './changeDetail'
+import config from '../../../config/config.json'
 
 export default {
     components: {
@@ -79,7 +80,8 @@ export default {
     methods:{
         getCompetitions(){
             let bind = this;
-            const url = 'http://13.125.196.191:8888/';
+            const url = config.confidential.serverIP;
+          
             this.$http.get(`${url}`).then(
                 function(success){
                     bind.competitions = success.data;
